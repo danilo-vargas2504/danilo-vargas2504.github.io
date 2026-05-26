@@ -1,0 +1,756 @@
+/* ============================================================
+   GEOVISOR – Jardín  |  styles.css  (Professional Edition)
+   ============================================================ */
+
+/* ── Variables ─────────────────────────────────────────── */
+:root {
+    --bg-dark:      #0d1117;
+    --bg-panel:     #161c24;
+    --bg-panel-alt: #1c2430;
+    --border:       #2a3444;
+    --border-light: #334155;
+    --accent:       #5cefb0;
+    --accent-dim:   rgba(92, 239, 176, 0.12);
+    --accent2:      #38bdf8;
+    --text-primary: #e2e8f0;
+    --text-muted:   #64748b;
+    --text-label:   #94a3b8;
+    --header-h:     44px;
+    --radius:       8px;
+    --radius-sm:    5px;
+    --shadow:       0 4px 24px rgba(0,0,0,0.45);
+    --font-ui:      'DM Sans', system-ui, sans-serif;
+    --font-mono:    'Space Mono', monospace;
+}
+
+/* ── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    height: 100%;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: 13px;
+    overflow: hidden;
+}
+
+/* ── App shell ──────────────────────────────────────────── */
+#app {
+    height: calc(100vh - var(--header-h));
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+#appHeader {
+    height: var(--header-h);
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2000;
+}
+
+#headerBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-title {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+}
+
+.brand-sub {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+}
+
+#headerMeta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.header-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    border: 1px solid var(--border-light);
+    border-radius: 100px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+}
+
+/* ── Map ────────────────────────────────────────────────── */
+#map {
+    height: 65vh;
+    width: 100%;
+    background: #0a0f14;
+}
+
+/* ── Resize bar ─────────────────────────────────────────── */
+#resizeBar {
+    height: 10px;
+    background: var(--bg-panel);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    cursor: ns-resize;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resize-grip {
+    width: 36px;
+    height: 3px;
+    border-radius: 10px;
+    background: var(--border-light);
+}
+
+/* ── Panel inferior ─────────────────────────────────────── */
+#panelInferior {
+    flex: 1;
+    min-height: 160px;
+    background: var(--bg-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Panel de consulta (floating card) ─────────────────── */
+.panel-botones {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 240px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    z-index: 1100;
+}
+
+.panel-botones-header {
+    background: var(--bg-panel-alt);
+    color: var(--accent);
+    padding: 9px 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+    user-select: none;
+}
+
+.panel-botones-body {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ── Field label ────────────────────────────────────────── */
+.field-label {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* ── Select ─────────────────────────────────────────────── */
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: 12px;
+    padding: 7px 30px 7px 10px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.select-wrapper select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-dim);
+}
+
+.select-wrapper select option {
+    background: var(--bg-panel);
+}
+
+.select-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--text-muted);
+}
+
+/* ── Button group ───────────────────────────────────────── */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.btn-panel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 11px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    color: var(--text-label);
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+.btn-panel:hover {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-panel svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.btn-panel:hover svg {
+    opacity: 1;
+}
+
+/* ── Floating panels (dashboard / tabla) ────────────────── */
+.panel-info {
+    position: absolute;
+    top: 12px;
+    left: 270px;
+    width: 380px;
+    height: 230px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+#tablaAtributos {
+    left: 670px;
+}
+
+.panel-header {
+    background: var(--bg-panel-alt);
+    color: var(--accent);
+    padding: 9px 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.panel-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    line-height: 1;
+    transition: color 0.15s, background 0.15s;
+}
+
+.panel-close:hover {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.1);
+}
+
+.panel-body {
+    padding: 12px;
+    flex: 1;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-light) transparent;
+}
+
+.panel-body::-webkit-scrollbar { width: 5px; height: 5px; }
+.panel-body::-webkit-scrollbar-track { background: transparent; }
+.panel-body::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 10px; }
+
+.panel-body h3 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+}
+
+.panel-body p {
+    font-size: 12.5px;
+    color: var(--text-label);
+    line-height: 1.7;
+}
+
+.panel-body p b {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ── Resize handle ──────────────────────────────────────── */
+.resize-handle {
+    height: 10px;
+    background: var(--bg-panel-alt);
+    border-top: 1px solid var(--border);
+    cursor: ns-resize;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resize-handle::after {
+    content: '';
+    width: 24px;
+    height: 2px;
+    border-radius: 10px;
+    background: var(--border-light);
+}
+
+/* ── Tabla de atributos ─────────────────────────────────── */
+#tablaContenido table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+#tablaContenido thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+#tablaContenido th {
+    background: var(--bg-panel-alt);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+#tablaContenido td {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    color: var(--text-label);
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+#tablaContenido tr:hover td {
+    background: var(--accent-dim);
+    color: var(--text-primary);
+}
+
+/* ── Leaflet overrides ──────────────────────────────────── */
+.leaflet-control-layers {
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--shadow) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-ui) !important;
+    font-size: 12px !important;
+}
+
+.leaflet-control-layers-separator {
+    border-top-color: var(--border) !important;
+}
+
+.leaflet-control-layers-toggle {
+    background-color: var(--bg-panel) !important;
+    border: 1px solid var(--border) !important;
+}
+
+.leaflet-bar {
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+/* Estilo oscuro para botones genéricos (zoom, etc.) — NO tocar Draw */
+.leaflet-bar a {
+    background-color: var(--bg-panel) !important;
+    color: var(--text-label) !important;
+    border-bottom-color: var(--border) !important;
+    transition: background-color 0.15s, color 0.15s !important;
+}
+
+.leaflet-bar a:hover {
+    background-color: var(--accent-dim) !important;
+    color: var(--accent) !important;
+}
+
+.leaflet-bar a:first-child { border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important; }
+.leaflet-bar a:last-child  { border-radius: 0 0 var(--radius-sm) var(--radius-sm) !important; border-bottom: none !important; }
+
+/* ── Leaflet Draw & Measure — Custom Icon Toolbar ──────── */
+
+/* Toolbar container */
+.leaflet-draw.leaflet-control,
+.leaflet-control-measure.leaflet-control {
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--shadow) !important;
+    overflow: hidden;
+    margin-bottom: 6px !important;
+}
+
+/* Todos los botones de la toolbar */
+.leaflet-draw-toolbar a,
+.leaflet-control-measure a.leaflet-measure-action {
+    width: 34px !important;
+    height: 34px !important;
+    line-height: 34px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: var(--bg-panel) !important;
+    background-image: none !important;
+    border-bottom: 1px solid var(--border) !important;
+    transition: background-color 0.18s, border-color 0.18s !important;
+    text-indent: 0 !important;
+    font-size: 0 !important;
+}
+
+.leaflet-draw-toolbar a:last-child {
+    border-bottom: none !important;
+}
+
+.leaflet-draw-toolbar a:hover,
+.leaflet-control-measure a.leaflet-measure-action:hover {
+    background-color: var(--accent-dim) !important;
+    border-color: var(--accent) !important;
+}
+
+/* SVG icons injected via JS */
+.leaflet-draw-toolbar a svg,
+.leaflet-control-measure a svg {
+    display: block;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.leaflet-draw-toolbar a:hover svg *,
+.leaflet-control-measure a:hover svg * {
+    stroke: var(--accent) !important;
+    fill: none;
+}
+
+/* Separador entre sección draw y edit */
+.leaflet-draw-section:first-child {
+    border-bottom: 1px solid var(--border-light) !important;
+}
+
+/* Active state */
+.leaflet-draw-toolbar .leaflet-draw-toolbar-button-enabled {
+    background-color: var(--accent-dim) !important;
+}
+.leaflet-draw-toolbar .leaflet-draw-toolbar-button-enabled svg * {
+    stroke: var(--accent) !important;
+}
+
+/* Leaflet Measure button (toggle) */
+.leaflet-control-measure a.leaflet-measure-action {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 0 !important;
+    text-indent: 0 !important;
+}
+
+/* Measure popup/result panels */
+.leaflet-measure-resultpopup {
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius) !important;
+    font-family: var(--font-ui) !important;
+    font-size: 12px !important;
+}
+
+/* ── Scrollbar global ───────────────────────────────────── */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-light) transparent;
+}
+
+*::-webkit-scrollbar { width: 5px; height: 5px; }
+*::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 10px; }
+
+/* ── Layer tree label icons ─────────────────────────────── */
+.layer-icon-svg {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-right: 6px;
+    margin-bottom: 1px;
+}
+/* ============================================================
+   STREET VIEW  –  Estilos
+   ============================================================ */
+
+.sv-btn {
+    width: 34px !important;
+    height: 34px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0 !important;
+}
+
+.sv-btn-activo {
+    background-color: var(--accent-dim) !important;
+    border-color: var(--accent) !important;
+}
+
+.sv-btn-activo svg * {
+    stroke: var(--accent) !important;
+}
+
+.sv-marker-pin {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 3px rgba(92,239,176,0.35), 0 2px 8px rgba(0,0,0,0.5);
+    animation: sv-pulse 1.4s ease-out infinite;
+}
+
+@keyframes sv-pulse {
+    0%   { box-shadow: 0 0 0 3px rgba(92,239,176,0.35), 0 2px 8px rgba(0,0,0,0.5); }
+    70%  { box-shadow: 0 0 0 10px rgba(92,239,176,0),   0 2px 8px rgba(0,0,0,0.5); }
+    100% { box-shadow: 0 0 0 3px rgba(92,239,176,0.35), 0 2px 8px rgba(0,0,0,0.5); }
+}
+
+#panelStreetView {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 420px;
+    min-height: 300px;
+    max-height: calc(100% - 24px);
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: none;
+    flex-direction: column;
+    z-index: 1200;
+    overflow: hidden;
+}
+
+#panelStreetView .panel-header {
+    cursor: move;
+}
+
+#svMeta {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-panel-alt);
+    flex-shrink: 0;
+}
+
+#svMetaCoordenadas {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+}
+
+#svMetaDireccion {
+    font-size: 11.5px;
+    color: var(--text-label);
+    line-height: 1.4;
+}
+
+#svVisor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+    overflow: hidden;
+    position: relative;
+}
+
+.sv-imagen {
+    width: 100%;
+    flex: 1;
+    object-fit: cover;
+    display: block;
+    min-height: 160px;
+    max-height: 340px;
+    background: var(--bg-dark);
+}
+
+.sv-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 7px 12px;
+    background: var(--bg-panel-alt);
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.sv-link {
+    color: var(--accent2);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    transition: color 0.15s;
+}
+
+.sv-link:hover { color: var(--accent); text-decoration: underline; }
+
+.sv-dist-badge {
+    background: rgba(56,189,248,0.12);
+    border: 1px solid rgba(56,189,248,0.35);
+    color: var(--accent2);
+    font-size: 11px;
+    font-family: var(--font-mono);
+    padding: 5px 10px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+}
+
+.sv-loading {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--text-muted);
+    font-size: 12px;
+    padding: 30px;
+}
+
+.sv-spinner {
+    width: 28px;
+    height: 28px;
+    border: 2.5px solid var(--border-light);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: sv-spin 0.75s linear infinite;
+}
+
+@keyframes sv-spin { to { transform: rotate(360deg); } }
+
+.sv-vacio, .sv-error {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+#svToast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--bg-panel-alt);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    font-size: 12.5px;
+    padding: 9px 18px;
+    border-radius: 100px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 9999;
+    white-space: nowrap;
+}
+
+#svToast.sv-toast-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+/* ── Ícono imagen raster/temática en el árbol de capas ─── */
+.layer-icon-raster {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-right: 6px;
+    margin-bottom: 1px;
+}
